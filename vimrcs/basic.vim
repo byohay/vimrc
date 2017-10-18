@@ -64,6 +64,10 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -91,6 +95,9 @@ endif
 
 "Always show current position
 set ruler
+
+" Show line numbers
+set number
 
 " Height of the command bar
 set cmdheight=2
@@ -196,9 +203,11 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak
 set lbr
 set tw=500
+autocmd BufRead,BufNewFile   COMMIT_EDITMSG setlocal tw=72
+autocmd BufRead,BufNewFile   *.md setlocal tw=72
 
 set ai "Auto indent
 set si "Smart indent
@@ -245,6 +254,8 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext 
+nnoremap <C-tab> :tabnext<CR>
+nnoremap <C-S-Tab> :tabprevious<CR>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
