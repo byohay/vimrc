@@ -212,6 +212,7 @@ autocmd BufRead,BufNewFile   *.md setlocal tw=72
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set shiftwidth=2
 
 
 """"""""""""""""""""""""""""""
